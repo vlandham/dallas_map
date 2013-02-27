@@ -20,8 +20,8 @@ displayMap = (data) ->
       d.ll = new L.LatLng(d['y'],d['x'])
 
     if d['min_x'] and d['min_y'] and d['max_x'] and d['max_y']
-      # d.bounds = [[d['min_y'], d['min_x']], [d['max_y'], d['max_x']]]
-      d.bounds = [[d['max_y'], d['max_x']], [d['min_y'], d['min_x']]]
+      d.bounds = [[d['min_y'], d['min_x']], [d['max_y'], d['max_x']]]
+      # d.bounds = [[d['max_y'], d['max_x']], [d['min_y'], d['min_x']]]
 
   feature_map = {}
   features = []
