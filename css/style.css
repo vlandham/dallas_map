@@ -1,4 +1,102 @@
-#map {
-  width: 960px;
-  height: 500px;
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.89em;
+}
+
+h1, h2 {
+  font-family: 'Acme', sans-serif;
+  /* font-weight: 700; */
+  font-size: 2.3em;
+  margin-bottom: 10px;
+	letter-spacing: -0.04em;
+  line-height: 1.1em;
+  text-transform: uppercase;
+  color: #222;
+}
+
+h1#title-top {
+  font-size: 2em;
+  width: 80%;
+  margin-left: 80px;
+  color: #E98927;
+}
+
+h2#subtitle-top {
+  font-size: 1.4em;
+  /* width: 80%; */
+  margin-left: 80px;
+}
+
+#wrapper {
+  margin: auto;
+  width: 700px;
+}
+
+#top-page-nav {
+  height: 40px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#main {
+  width: 620px;
+  float: left;
+  position: absolute;
+}
+
+#large-map {
+  width: 620px;
+  height: 400px;
+}
+
+#sliders {
+  width: 440px;
+  float: left;
+  display: block;
+}
+
+.slider_container {
+  margin-bottom: 12px;
+  clear: both;
+  height: 20px;
+}
+
+.slider_name {
+  width: 110px;
+  float:left;
+  display: block;
+  text-align: right;
+  text-transform: uppercase;
+  color: #D87D24;
+}
+
+.slider {
+  width: 245px;
+  float: left;
+  display: block;
+  margin-left: 20px;
+}
+
+.slider_amount {
+  width: 30px;
+  float: left;
+  display: block;
+  margin-left: 10px;
+  text-align: left;
+  margin-left: 20px;
+}
+
+#top_ten {
+  float: left;
+  width: 165px;
+  margin-left: 10px;
+  height: 225px;
+  border: solid 1px #000;
+}
+
+.top_ten_header {
+  text-transform: uppercase;
+  background-color: #D87D24;
+  color: #333;
 }

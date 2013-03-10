@@ -1,67 +1,115 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <title>vis</title>
+  <title></title>
   <meta name="description" content="">
   <meta name="author" content="">
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- CSS concatenated and minified via ant build script-->
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:700|Josefin+Sans|Acme' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/bootstrap.min.css">
 
   <link rel="stylesheet" href="js/libs/leaflet/leaflet.css" />
   <!--[if lte IE 8]>
   <link rel="stylesheet" href="js/libs/leaflet/leaflet.ie.css" />
   <![endif]-->
+  <link rel="stylesheet" href="css/sunny/jquery-ui-1.10.1.custom.css">
   <link rel="stylesheet" href="css/style.css">
-  <!-- end CSS-->
-
-  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+  <script src="js/libs/modernizr-2.6.2.min.js"></script>
 </head>
-
 <body>
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="wrapper">
+      <div id="main">
+        <div id="top-page-nav"></div>
+        <div id="large-map"></div>
+        <h1 id="title-top">Your Ideal Neighborhood:</h1>
+        <h2 id="subtitle-top">Move the sliders to reflect your priorities</h2>
+        <div id="sliders">
+          <div class="slider_container">
+            <div class="slider_name">Schools</div>
+            <div id="schools_index_slider" class="slider"></div>
+            <div class="slider_amount" id="schools_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Safety</div>
+            <div id="safety_index_slider" class="slider"></div>
+            <div class="slider_amount" id="safety_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Appreciation</div>
+            <div id="appreciation_index_slider" class="slider"></div>
+            <div class="slider_amount" id="appreciation_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Affordability</div>
+            <div id="affordability_index_slider" class="slider"></div>
+            <div class="slider_amount" id="affordability_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Parks</div>
+            <div id="parks_index_slider" class="slider"></div>
+            <div class="slider_amount" id="parks_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Commute</div>
+            <div id="commute_index_slider" class="slider"></div>
+            <div class="slider_amount" id="commute_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Pets</div>
+            <div id="pet_index_slider" class="slider"></div>
+            <div class="slider_amount" id="pet_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Walkability</div>
+            <div id="walkability_index_slider" class="slider"></div>
+            <div class="slider_amount" id="walkability_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Landscaping</div>
+            <div id="landscaping_index_slider" class="slider"></div>
+            <div class="slider_amount" id="landscaping_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Quiet</div>
+            <div id="quiet_index_slider" class="slider"></div>
+            <div class="slider_amount" id="quiet_index_slider_amount">0</div>
+          </div>
+          <div class="slider_container">
+            <div class="slider_name">Go Do</div>
+            <div id="go_do_index_slider" class="slider"></div>
+            <div class="slider_amount" id="go_do_index_slider_amount">0</div>
+          </div>
+        </div> <!-- end sliders -->
+        <div id="top_ten">
+          <!-- <h3>Your Total:</h3> -->
+          <!-- <div id="total_count"></div> -->
+          <div class="top_ten_header">Your Top 10</div>
+          <div id="top_ten_list"></div>
+        </div> <!-- end top_ten -->
+      </div> <!-- end main -->
+    </div> <!-- end wrapper -->
 
-  <div id="container" class="container">
-    <header>
 
-    </header>
-    <div id="main" role="main">
-      <div id="map"></div>
-    </div>
-    <footer>
-
-    </footer>
-  </div> <!--! end of #container -->
-
-
-  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.9.1.min.js"><\/script>')</script>
+    <script defer src="js/plugins.js"></script>
+    <script src="js/libs/coffee-script.js"></script>
+    <script src="js/libs/rison.js"></script>
+    <script src="js/libs/leaflet/leaflet.js"></script>
+    <script src="js/libs/jquery-ui-1.10.1.custom.js"></script>
+    <script src="js/libs/d3.v3.min.js"></script>
+    <script type="text/coffeescript" src="coffee/vis.coffee"></script>
 
 
-  <script defer src="js/plugins.js"></script>
-  <script defer src="js/script.js"></script>
-  <script src="js/libs/coffee-script.js"></script>
-  <script src="js/libs/leaflet/leaflet.js"></script>
-  <script src="js/libs/d3.v3.js"></script>
-  <script type="text/coffeescript" src="coffee/vis.coffee"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-    });
-  </script>
-
-
-
-  <!--[if lt IE 7 ]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
-  
 </body>
 </html>
