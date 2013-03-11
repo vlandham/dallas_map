@@ -54,7 +54,7 @@ calculate_weighted_score = (weights, data) ->
   data.forEach (d) ->
     total = 0
     d3.entries(weights).forEach (weight_entry) ->
-      total += (d[weight_entry.key] * ((weight_entry.value / weight_max) + 0.1))
+      total += (d[weight_entry.key] * ((weight_entry.value / weight_max) + 0.01))
     d.weighted_score = total
 
 sort_by_weighted_score = (data) ->
@@ -145,14 +145,34 @@ displayMap = (data) ->
   map_icons_layer.addTo(map)
   update_map(data)
 
+show_details = (n_data) ->
+  ordered_weights = d3.entries(root.options.weights)
+  ordered_weights.sort (a,b) -> b.value - a.value
+  d3.select("#details").selectAll(".detail").remove()
+  d3.select("#details").selectAll(".detail")
+    .data(ordered_weights)
+    .enter().append("li")
+    .attr("class", "detail")
+    .text((d) -> "#{d.key}: #{toFixed(n_data[d.key], 2)}")
 
 update_top_ten = (top_data) ->
-  top_ten_content = "<ol>\n"
-  top_data.forEach (d) ->
-    top_ten_content += "<li>#{d.name}</li>\n"
-  top_ten_content += "</ol>\n"
+  d3.select("#top_ten_list").selectAll(".top").remove()
+  tops = d3.select("#top_ten_list").selectAll(".top")
+    .data(top_data)
 
-  $('#top_ten_list').html(top_ten_content)
+  tops.enter().append("li")
+    .attr("class", "top")
+    .text((d) -> d.name)
+  tops.on "mouseover", (d) ->
+    highlight_on_map(d)
+    show_details(d)
+
+  # top_ten_content = "<ol>\n"
+  # top_data.forEach (d) ->
+  #   top_ten_content += "<li>#{d.name}</li>\n"
+  # top_ten_content += "</ol>\n"
+
+  # $('#top_ten_list').html(top_ten_content)
 
 highlight_on_map = (bubble_data) ->
   if bubble_data.marker
@@ -216,13 +236,10 @@ $ ->
   d3.select(window)
     .on("hashchange", hashchange)
 
-  # initial_weights = root.options.weights
-  # console.log(initial_weights)
-  # if !initial_weights
-  #   initial_weights = {}
-  # else
-  #   weights = initial_weights
   d3.entries(initial_weights).forEach (entry) ->
+    # this appears to be necessary as it was
+    # calling values that were '0' the same as 
+    # values that weren't there
     if typeof root.options.weights[entry.key] is 'undefined'
       console.log(entry.key)
       console.log(root.options.weights[entry.key])
@@ -240,6 +257,9 @@ $ ->
         self = $(this)
         dom_id = self.attr("id").replace("_slider","")
         root.options.weights[dom_id] = self.slider("option", "value")
+        # update current sliders text
+        value_id = "#" + self.attr("id") + "_amount"
+        $(value_id).text(self.slider("option", "value"))
       slide: (event, ui) ->
         self = $(this)
 

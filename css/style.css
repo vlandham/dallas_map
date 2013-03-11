@@ -99,6 +99,15 @@ h2#subtitle-top {
   border: solid 1px #000;
 }
 
+#details_section {
+  margin-top: 20px;
+  float: left;
+  width: 165px;
+  margin-left: 10px;
+  /* height: 225px; */
+  border: solid 1px #000;
+}
+
 .top_ten_header {
   text-transform: uppercase;
   background-color: #D87D24;
