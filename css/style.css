@@ -87,6 +87,10 @@ h2#subtitle-top {
   margin-left: 20px;
 }
 
+#slider_reset {
+  cursor: pointer;
+}
+
 #top_ten {
   float: left;
   width: 165px;
@@ -99,4 +103,13 @@ h2#subtitle-top {
   text-transform: uppercase;
   background-color: #D87D24;
   color: #333;
+}
+
+#bottom_banner {
+  height: 100px;
+  background-color: #DDD;
+}
+
+#attribution_text {
+  padding-bottom: 20px;
 }
